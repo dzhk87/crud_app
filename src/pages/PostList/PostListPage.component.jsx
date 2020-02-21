@@ -2,14 +2,15 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import PostRow from './components/PostRow.component';
+import ShowPost from './components/ShowPost.component';
 import {
   setPost,
   deletePost,
-  deleteAllPosts,
   postListPageInit
 } from '../../actions';
 import { getPosts } from '../../selectors';
+
+import './PostListPage.component.css'
 
 const mapStateToProps = state => ({
   posts: getPosts(state)
@@ -19,7 +20,6 @@ const mapDispatchToProps = dispatch => ({
   postListPageInit: posts => dispatch(postListPageInit(posts)),
   setPost: post => dispatch(setPost(post)),
   deletePost: id => dispatch(deletePost(id)),
-  deleteAll: () => dispatch(deleteAllPosts())
 });
 
 class PostListPage extends React.Component {
@@ -36,7 +36,6 @@ class PostListPage extends React.Component {
           map[post.id] = post;
           return map;
         }, {});
-        this.props.deleteAll();
         this.props.postListPageInit(bodyMap);
       })
       .catch(err => console.log(err));
@@ -58,7 +57,8 @@ class PostListPage extends React.Component {
           const pid = post.get('id');
           return (
             <div className='post-row' key={index}>
-              <PostRow key={pid} pid={pid} remove={this.remove} />
+              <ShowPost key={pid} pid={pid} remove={this.remove} />
+              <hr />
             </div>
           );
         })}

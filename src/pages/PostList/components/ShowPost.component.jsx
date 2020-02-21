@@ -10,7 +10,7 @@ const mapStateToProps = (state, props) => {
   }
 };
 
-class PostRow extends React.Component {
+class ShowPost extends React.Component {
   render() {
     const { post } = this.props;
     const pid = post.get('id');
@@ -26,11 +26,10 @@ class PostRow extends React.Component {
           <button>Edit</button>
         </Link>
         <button onClick={() => this.props.remove(pid)}>Delete</button>
-        <hr />
       </div>
     );
   }
 }
 
 
-export default connect(mapStateToProps)(PostRow);
+export default connect(mapStateToProps)(ShowPost);

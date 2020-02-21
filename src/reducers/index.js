@@ -27,8 +27,6 @@ const postListReducer = (state = postListState, action) => {
       return state.setIn(['posts', `${action.post.id}`], Immutable.fromJS(action.post));
     case ActionTypes.DELETE_POST:
       return state.deleteIn(['posts', `${action.id}`]);
-    case ActionTypes.DELETE_ALL_POSTS:
-      return postListState;
     default:
       return state;
   }

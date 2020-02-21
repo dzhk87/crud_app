@@ -1,0 +1,8 @@
+.post-list {
+    width: 70%;
+    display: inline-block;
+}
+
+.show-post {
+    padding-bottom: 20px;
+}
