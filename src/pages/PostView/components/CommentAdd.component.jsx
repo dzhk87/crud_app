@@ -1,16 +1,16 @@
-import React from "react";
+import React from 'react';
 
 const CommentAdd = ({ handleSubmit, handleChange, commentText }) => {
   return (
-    <div className="comment-post">
+    <div className='comment-post'>
       <form onSubmit={handleSubmit}>
         <textarea
-          name="commentText"
-          placeholder="Enter a comment"
+          name='commentText'
+          placeholder='Enter a comment'
           onChange={handleChange}
           value={commentText}
         />
-        <input type="submit" />
+        <input type='submit' />
       </form>
     </div>
   );

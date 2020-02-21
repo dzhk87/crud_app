@@ -1,10 +1,9 @@
 import React from 'react';
 import {connect} from 'react-redux'
-import {Link} from "react-router-dom";
-import {getPostDetail} from "../../../selectors";
+import {Link} from 'react-router-dom';
+import {getPostDetail} from '../../../selectors';
 
-
-const mapStateToProps = (state, props) => {
+const mapStateToProps = state => {
   return {
     post: getPostDetail(state)
   }

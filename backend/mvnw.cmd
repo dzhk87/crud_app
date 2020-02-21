@@ -24,20 +24,20 @@
 @REM JAVA_HOME - location of a JDK home dir
 @REM
 @REM Optional ENV vars
-@REM M2_HOME - location of maven2's installed home dir
-@REM MAVEN_BATCH_ECHO - set to 'on' to enable the echoing of the batch commands
-@REM MAVEN_BATCH_PAUSE - set to 'on' to wait for a keystroke before ending
+@REM M2_HOME - location of maven2"s installed home dir
+@REM MAVEN_BATCH_ECHO - set to "on" to enable the echoing of the batch commands
+@REM MAVEN_BATCH_PAUSE - set to "on" to wait for a keystroke before ending
 @REM MAVEN_OPTS - parameters passed to the Java VM when running Maven
 @REM     e.g. to debug Maven itself, use
 @REM set MAVEN_OPTS=-Xdebug -Xrunjdwp:transport=dt_socket,server=y,suspend=y,address=8000
 @REM MAVEN_SKIP_RC - flag to disable loading of mavenrc files
 @REM ----------------------------------------------------------------------------
 
-@REM Begin all REM lines with '@' in case MAVEN_BATCH_ECHO is 'on'
+@REM Begin all REM lines with "@" in case MAVEN_BATCH_ECHO is "on"
 @echo off
 @REM set title of command window
 title %0
-@REM enable echoing by setting MAVEN_BATCH_ECHO to 'on'
+@REM enable echoing by setting MAVEN_BATCH_ECHO to "on"
 @if "%MAVEN_BATCH_ECHO%" == "on"  echo %MAVEN_BATCH_ECHO%
 
 @REM set %HOME% to equivalent of $HOME
@@ -137,16 +137,16 @@ if exist %WRAPPER_JAR% (
         SET DOWNLOAD_URL="%MVNW_REPOURL%/io/takari/maven-wrapper/0.5.6/maven-wrapper-0.5.6.jar"
     )
     if "%MVNW_VERBOSE%" == "true" (
-        echo Couldn't find %WRAPPER_JAR%, downloading it ...
+        echo Couldn"t find %WRAPPER_JAR%, downloading it ...
         echo Downloading from: %DOWNLOAD_URL%
     )
 
     powershell -Command "&{"^
 		"$webclient = new-object System.Net.WebClient;"^
-		"if (-not ([string]::IsNullOrEmpty('%MVNW_USERNAME%') -and [string]::IsNullOrEmpty('%MVNW_PASSWORD%'))) {"^
-		"$webclient.Credentials = new-object System.Net.NetworkCredential('%MVNW_USERNAME%', '%MVNW_PASSWORD%');"^
+		"if (-not ([string]::IsNullOrEmpty("%MVNW_USERNAME%") -and [string]::IsNullOrEmpty("%MVNW_PASSWORD%"))) {"^
+		"$webclient.Credentials = new-object System.Net.NetworkCredential("%MVNW_USERNAME%", "%MVNW_PASSWORD%");"^
 		"}"^
-		"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $webclient.DownloadFile('%DOWNLOAD_URL%', '%WRAPPER_JAR%')"^
+		"[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12; $webclient.DownloadFile("%DOWNLOAD_URL%", "%WRAPPER_JAR%")"^
 		"}"
     if "%MVNW_VERBOSE%" == "true" (
         echo Finished downloading %WRAPPER_JAR%
@@ -174,7 +174,7 @@ if exist "%HOME%\mavenrc_post.bat" call "%HOME%\mavenrc_post.bat"
 if exist "%HOME%\mavenrc_post.cmd" call "%HOME%\mavenrc_post.cmd"
 :skipRcPost
 
-@REM pause the script if MAVEN_BATCH_PAUSE is set to 'on'
+@REM pause the script if MAVEN_BATCH_PAUSE is set to "on"
 if "%MAVEN_BATCH_PAUSE%" == "on" pause
 
 if "%MAVEN_TERMINATE_CMD%" == "on" exit %ERROR_CODE%

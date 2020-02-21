@@ -1,15 +1,15 @@
-import React from "react";
-import { connect } from "react-redux";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 
-import PostRow from "./components/PostRow.component";
+import PostRow from './components/PostRow.component';
 import {
   setPost,
   deletePost,
   deleteAllPosts,
   postListPageInit
-} from "../../actions";
-import { getPosts } from "../../selectors";
+} from '../../actions';
+import { getPosts } from '../../selectors';
 
 const mapStateToProps = state => ({
   posts: getPosts(state)
@@ -29,7 +29,7 @@ class PostListPage extends React.Component {
   }
 
   async componentDidMount() {
-    await fetch("http://localhost:8080/api/posts")
+    await fetch(`http://localhost:8080/api/posts`)
       .then(res => res.json())
       .then(body => {
         const bodyMap = body.reduce((map, post) => {
@@ -44,7 +44,7 @@ class PostListPage extends React.Component {
 
   async remove(id) {
     await fetch(`http://localhost:8080/api/posts/${id}`, {
-      method: "DELETE"
+      method: 'DELETE'
     }).then(() => {
       this.props.deletePost(id);
     });
@@ -53,16 +53,16 @@ class PostListPage extends React.Component {
   render() {
     const { posts } = this.props;
     return (
-      <div className="post-list">
+      <div className='post-list'>
         {posts.toList().map((post, index) => {
-          const pid = post.get("id");
+          const pid = post.get('id');
           return (
-            <div className="post-row" key={index}>
+            <div className='post-row' key={index}>
               <PostRow key={pid} pid={pid} remove={this.remove} />
             </div>
           );
         })}
-        <Link to={"/posts/new"}>
+        <Link to={'/posts/new'}>
           <button>Add</button>
         </Link>
       </div>
