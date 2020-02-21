@@ -7,10 +7,6 @@ export const SET_COMMENT = 'SET_COMMENT';
 export const DELETE_COMMENT = 'DELETE_COMMENT';
 export const DELETE_ALL_COMMENTS = 'DELETE_ALL_COMMENTS';
 
-export const deleteAllPosts = () => ({
-  type: DELETE_ALL_POSTS
-});
-
 export const deleteAllComments = () => ({
   type: DELETE_ALL_COMMENTS
 });
