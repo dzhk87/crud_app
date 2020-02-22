@@ -1,5 +1,7 @@
 package com.example.board.comment;
 
+import com.example.board.post.Post;
+import com.example.board.post.PostRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,6 +14,8 @@ public class CommentService {
 
   @Autowired
   private CommentRepository commentRepository;
+  @Autowired
+  private PostRepository postRepository;
 
   public List<Comment> findAll() {
     return commentRepository.findAll();
@@ -23,8 +27,10 @@ public class CommentService {
 
   public Comment addComment(Comment c) {
     Comment newComment = new Comment();
+    Post p = postRepository.findById(c.getPostId()).orElse(new Post());
+    newComment.setPost(p);
+    newComment.setPostId(c.getPostId());
     newComment.setCommentText(c.getCommentText());
-    newComment.setPost(c.getPost());
     newComment.setCommentDate(new Date());
 
     return commentRepository.save(newComment);
