@@ -22,7 +22,6 @@ class PostDetail extends React.Component {
           <button>Edit</button>
         </Link>
         <button onClick={() => this.props.remove(pid)}>Delete</button>
-        <hr />
       </div>
     );
   }

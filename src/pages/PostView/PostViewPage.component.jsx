@@ -12,6 +12,7 @@ import {
 } from '../../actions';
 import { getPostDetail, getCommentIds, getComments } from '../../selectors';
 import CommentAdd from './components/CommentAdd.component';
+import './PostViewPage.component.css';
 
 const mapStateToProps = (state, props) => {
   const pid = props.match.params.id;
@@ -84,8 +85,9 @@ class PostViewPage extends React.Component {
 
   async handleSubmit(event) {
     event.preventDefault();
-
+    
     const { post } = this.props;
+    const pid = post.get('id');
     const { commentText } = this.state;
 
     if (!commentText.length) {
@@ -96,9 +98,9 @@ class PostViewPage extends React.Component {
     // logic for posting to db
     const newComment = {
       commentText,
-      post
+      postId: pid
     };
-    await fetch(`http://localhost:8080/api/posts/${post.get('id')}`, {
+    await fetch(`http://localhost:8080/api/posts/${pid}`, {
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -132,7 +134,9 @@ class PostViewPage extends React.Component {
       }
     )
       .then(res => res.json())
-      .then(body => this.props.setComment(body));
+      .then(body => {
+        this.props.setComment(body)
+      });
   }
 
   async removeComment(cid) {
@@ -153,7 +157,7 @@ class PostViewPage extends React.Component {
       <div className='view-page'>
         {/* Display post content */}
         <PostDetail key={post.id} post={post} />
-
+        <hr />
         {/* Display comments */}
         {this.props.commentIds.sort().map((cid, i) => {
           return (

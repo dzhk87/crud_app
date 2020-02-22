@@ -28,7 +28,7 @@ export const getCommentIds = createSelector(
    comments => memoize(pid => {
      return comments
        .filter(c => {
-         return c.getIn(['post', 'id']).toString() === pid;
+         return c.getIn(['postId']).toString() === pid;
        })
        .keySeq()
    })
